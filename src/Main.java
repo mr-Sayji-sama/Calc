@@ -16,7 +16,7 @@ public class Main {
         System.out.println("Output: " );
         try {
             //Извлечение арифметических операций
-            String regex = "(\\d+|[A-Z]+)\\s*([+\\-*/])\\s*(\\d+|[A-Z]+)"; // Регулярное выражение для извлечения операторов
+            String regex = "(\\d+|[A-Za-z]+)\\s*([+\\-*/])\\s*(\\d+|[A-Za-z]+)"; // Регулярное выражение для извлечения операторов
 
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(instr);
@@ -46,6 +46,9 @@ public class Main {
             }
             if (isroma && isint) {
                 throw new ArithmeticException("т.к. используются одновременно разные системы счисления");
+            }
+            if (first > 10 || second > 10 ) {
+                throw new ArithmeticException("т.к. числа не больше 10 (X)");
             }
             if (isroma && operator == '-' && second > first) {
                 throw new ArithmeticException("т.к. в римской системе нет отрицательных чисел");
